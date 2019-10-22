@@ -1,8 +1,9 @@
 ---
-- name: xxxxx
-  command: sh /opt/getip.sh
-  changed_when: false
-- name: yyyyy
-  command: sh /opt/sedip.sh
+- name: getip
+  shell: ip a | grep -w "inet" | grep ens33 |sed 's/^.*inet //g'|sed 's/\/[0-9][0-9].*$//g'
+  register: nodeip
+  changed_when: "nodeip.rc != 0"
+- name: sedip
+  shell: sed -i 's#nodeip#{{ nodeip['stdout'] }}#g' /etc/emqttd/emq.conf
+  changed_when: False
   notify: restart emq
-  changed_when: false
