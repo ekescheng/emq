@@ -3,5 +3,6 @@
   command: ip a | grep -w "inet" | grep ens33 |sed 's/^.*inet //g'|sed 's/\/[0-9][0-9].*$//g'
   register: nodeip
 - name: change ip sed
-  command: sed -i 's#nodeip#{{ nodeip['stdout'] }}#g' /etc/emqttd/emq.conf
+  shell: sh /opt/sedip.sh
+  changed_when: false
   notify: restart emq
