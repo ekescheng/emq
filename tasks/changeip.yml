@@ -1,7 +1,7 @@
 ---
 - name: Notice which machine installed
-  shell: ip a | grep -w "inet" | grep ens33 |sed 's/^.*inet //g'|sed 's/\/[0-9][0-9].*$//g'
+  command: sh /opt/getip.sh
   register: nodeip
 - name: Change the node info
-  shell: sed -i 's#nodeip#{{ nodeip['stdout'] }}#g' /etc/emqttd/emq.conf
+  command: sh /opt/sedip.sh
   notify: restart emq
