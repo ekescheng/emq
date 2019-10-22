@@ -1,19 +1,13 @@
 ---
 - name: install yum-utils
   yum: name=yum-utils state=present
-
 - name: install lksctp-tools
   yum: name=lksctp-tools state=present
-
-- name: install emq yum reepo
-  shell: yum localinstall -y emqttd-centos7-v2.3.11-1.el7.centos.x86_64.rpm
-  args:
-    chdir: "/opt/"
-
-- name: 复制配置文件到emq服务
+- name: install emq
+  yum: name=/opt/emqttd-centos7-v2.3.11-1.el7.centos.x86_64.rpm state=present
+- name: copy conf file and restart emq
   copy: src=emq.conf dest=/etc/emqttd/emq.conf
   notify: restart emq
-
-- name: 设置开启自启动emq
+- name: enable emq service
   service: name=emqttd.service enabled=yes
 
