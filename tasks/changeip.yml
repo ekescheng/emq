@@ -1,5 +1,4 @@
 ---
-<<<<<<< HEAD
 - name: getip
   shell: ip a | grep -w "inet" | grep ens33 |sed 's/^.*inet //g'|sed 's/\/[0-9][0-9].*$//g'
   register: nodeip
@@ -7,12 +6,4 @@
 - name: sedip
   shell: sed -i 's#nodeip#{{ nodeip['stdout'] }}#g' /etc/emqttd/emq.conf
   changed_when: False
-=======
-- name: xxxxx
-  command: sh /opt/getip.sh
-  changed_when: true
-- name: yyyyy
-  command: sh /opt/sedip.sh
-  changed_when: ture
->>>>>>> 47889c03a16f3b9112e71ef46385c5771167c72d
   notify: restart emq
