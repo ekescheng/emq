@@ -1,7 +1,7 @@
 ---
 - name: getip
   vars:
-    nodeip: "{{ ansible_eth0['ipv4']['address'] }}"
+    nodeip: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
 - name: sedip
   command: /usr/bin/sh /opt/sedip.sh
   changed_when: False
