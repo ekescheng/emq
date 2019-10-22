@@ -1,0 +1,4 @@
+---
+# handlers file for daxin.emq
+- name: restart emq
+  service: name=emqttd enabled=yes state=restarted

@@ -1,0 +1,2 @@
+- name: copy emq.conf to client
+  copy: src=emq.conf dest=/etc/emqttd/emq.conf owner=root group=root

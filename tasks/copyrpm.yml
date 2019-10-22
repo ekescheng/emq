@@ -1,0 +1,2 @@
+- name: copy emq source code to client
+  copy: src=emqttd-centos7-v2.3.11-1.el7.centos.x86_64.rpm dest=/opt/ owner=root group=root
