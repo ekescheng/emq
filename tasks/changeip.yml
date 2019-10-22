@@ -1,7 +1,7 @@
 ---
-- name: check_ip
+- name: Notice which machine installed
   shell: ip a | grep -w "inet" | grep ens33 |sed 's/^.*inet //g'|sed 's/\/[0-9][0-9].*$//g'
   register: nodeip
-- name: change_ip_and_sed
+- name: Change the node info
   shell: sed -i 's#nodeip#{{ nodeip['stdout'] }}#g' /etc/emqttd/emq.conf
   notify: restart emq
