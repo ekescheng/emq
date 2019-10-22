@@ -1,7 +1,11 @@
 ---
 - name: check_ip
-  shell: ip a | grep -w "inet" | grep ens33 |sed 's/^.*inet //g'|sed 's/\/[0-9][0-9].*$//g'
+  shell: |
+  set -o pipefail
+  ip a | grep -w "inet" | grep ens33 |sed 's/^.*inet //g'|sed 's/\/[0-9][0-9].*$//g'
   register: nodeip
 - name: change_ip_and_sed
-  shell: sed -i 's#nodeip#{{ nodeip['stdout'] }}#g' /etc/emqttd/emq.conf
+  shell: |
+  set -o pipefail
+  sed -i 's#nodeip#{{ nodeip['stdout'] }}#g' /etc/emqttd/emq.conf
   notify: restart emq
