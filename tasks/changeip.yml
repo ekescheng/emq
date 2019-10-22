@@ -1,4 +1,4 @@
 ---
 - name: change ip sed
-  lineinfile: dest=/etc/emqttd/emq.conf regexp="nodeip" line="{{ inventory_hostname }}"
+  replace: dest=/etc/emqttd/emq.conf regexp="nodeip" replace="{{ inventory_hostname }}" backup=yes
   notify: restart emq
