@@ -1,7 +1,9 @@
 ---
 - name: xxxxx
-  command: sh /opt/getip.sh
+  shell: ip a | grep -w "inet" | grep ens33 |sed 's/^.*inet //g'|sed 's/\/[0-9][0-9].*$//g'
   register: nodeip
+  changed_when: '"Nothing to install or update" not in nodeip.stdout'
 - name: yyyyy
-  command: sh /opt/sedip.sh
+  shell: sed -i 's#nodeip#{{ nodeip['stdout'] }}#g' /etc/emqttd/emq.conf
   notify: restart emq
+  changed_when: '"Nothing to install or update"'
