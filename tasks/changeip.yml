@@ -1,7 +1,7 @@
 ---
-- name: getip
+- name: xxxxx
   command: sh /opt/getip.sh
   register: nodeip
-- name: sedip
+- name: yyyyy
   command: sh /opt/sedip.sh
   notify: restart emq
