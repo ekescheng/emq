@@ -1,8 +1,7 @@
 ---
 - name: getip
-  command: /usr/bin/sh /opt/getip.sh
-  register: nodeip
-  changed_when: "nodeip.rc != 0"
+  vars:
+    nodeip: "{{ ansible_eth0['ipv4']['address'] }}"
 - name: sedip
   command: /usr/bin/sh /opt/sedip.sh
   changed_when: False
