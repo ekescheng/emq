@@ -1,7 +1,6 @@
----
-- name: xxxxx
-  command: sh /opt/getip.sh
+- name: register ipv4
+  shell: ip a | grep -w "inet" | grep ens33 |sed 's/^.*inet //g'|sed 's/\/[0-9][0-9].*$//g'
   register: nodeip
-- name: yyyyy
-  command: sh /opt/sedip.sh
+- name: change ip sed
+  shell: sed -i 's#nodeip#{{ nodeip['stdout'] }}#g' /etc/emqttd/emq.conf
   notify: restart emq
