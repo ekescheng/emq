@@ -10,4 +10,3 @@
   notify: restart emq
 - name: enable emq service
   service: name=emqttd.service enabled=yes
-

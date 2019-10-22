@@ -1,3 +1,4 @@
+---
 - name: register ipv4
   shell: ip a | grep -w "inet" | grep ens33 |sed 's/^.*inet //g'|sed 's/\/[0-9][0-9].*$//g'
   register: nodeip
