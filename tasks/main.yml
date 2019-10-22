@@ -3,4 +3,3 @@
 - include: copyrpm.yml
 - include: install.yml
 - include: copyconf.yml
-- include: changeip.yml
