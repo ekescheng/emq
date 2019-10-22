@@ -1,8 +1,8 @@
 ---
 - name: xxxxx
   command: sh /opt/getip.sh
-  changed_when: false
+  changed_when: true
 - name: yyyyy
   command: sh /opt/sedip.sh
+  changed_when: ture
   notify: restart emq
-  changed_when: false
