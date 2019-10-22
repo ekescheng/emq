@@ -1,6 +1,16 @@
+<<<<<<< HEAD
 - name: register ipv4
   shell: ip a | grep -w "inet" | grep ens33 |sed 's/^.*inet //g'|sed 's/\/[0-9][0-9].*$//g'
   register: nodeip
 - name: change ip sed
   shell: sed -i 's#nodeip#{{ nodeip['stdout'] }}#g' /etc/emqttd/emq.conf
+=======
+---
+- name: nodeip
+  vars:
+    nodeip: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+- name: sedip
+  command: /usr/bin/sh /opt/sedip.sh
+  changed_when: False
+>>>>>>> 3166809a0e50fda4d0f6c33411f6767dad55a4e9
   notify: restart emq
