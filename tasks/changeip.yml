@@ -1,8 +1,8 @@
 ---
 - name: xxxxx
   command: sh /opt/getip.sh
-  changed_when: '"Nothing to install or update" not in nodeip.stdout'
+  changed_when: false
 - name: yyyyy
   command: sh /opt/sedip.sh
   notify: restart emq
-  changed_when: '"Nothing to install or update"'
+  changed_when: false
