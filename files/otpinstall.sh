@@ -1,5 +1,5 @@
 cd /opt/
-tar -zxvf otp_src_20.3.tar.gz
+tar -xvf otp_src_20.3.tar.gz
 sleep 2
 cd /opt/otp_src*
 ./configure --prefix=/usr/local/erlang --with-ssl --enable-threads --enable-smp-support --enable-kernel-poll --enable-hipe --without-javac

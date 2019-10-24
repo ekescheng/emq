@@ -1,5 +1,7 @@
 - name: copy emqttd-centos7-v2.3.11-1.el7.centos.x86_64.rpm
   copy: src=/opt/software/emqttd-centos7-v2.3.11-1.el7.centos.x86_64.rpm dest=/opt/ owner=root group=root
+- name: copy otpinstall.sh
+  copy: src=/opt/otpinstall.sh dest=/opt/ owner=root group=root
 - name: copy erlang-20.3.8.4-1.el7.centos.x86_64.rpm
   copy: src=/opt/software/erlang-20.3.8.4-1.el7.centos.x86_64.rpm dest=/opt/ owner=root group=root
 - name: copy otp_src_20.3.tar.tar
