@@ -22,7 +22,7 @@
 - name: install socat
   yum: name=/opt/erlang-20.3.8.4-1.el7.centos.x86_64.rpm state=present
 - name: install otp
-  command: sh otpinstall.sh
+  command: sh /opt/otpinstall.sh
   changed_when: "true"
 - name: install emq
   yum: name=/opt/emqttd-centos7-v2.3.11-1.el7.centos.x86_64.rpm state=present
