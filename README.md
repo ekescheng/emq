@@ -19,6 +19,22 @@ Dependencies
 
 A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
+Example Hosts
+----------------
+Including an example of how to config your hosts file
+
+[emq]
+192.168.230.139
+192.168.230.140
+192.168.230.141
+
+[emq_slave]
+192.168.230.140
+192.168.230.141
+
+[emq_slave:vars]
+masterip=192.168.230.139
+
 Example Playbook
 ----------------
 
